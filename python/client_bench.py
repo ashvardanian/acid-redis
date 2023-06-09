@@ -13,11 +13,11 @@ t1 = perf_counter()
 for i in range(operation_count):
     client.set(key=i, value='value')
 t2 = perf_counter()
-print('Set: {:.0f}op/s'.format(operation_count/(t2-t1)))
+print('Set: {:.0f} op/s'.format(operation_count/(t2-t1)))
 
 
 t1 = perf_counter()
 for i in range(operation_count):
     response = client.get(key=i)
 t2 = perf_counter()
-print('Get: {:.0f}op/s'.format(operation_count/(t2-t1)))
+print('Get: {:.0f} op/s'.format(operation_count/(t2-t1)))
