@@ -7,7 +7,7 @@ from ustore.ucset import DataBase
 
 db = DataBase()
 main = db.main
-server = Server(port=6379)
+server = Server(port=6378)
 
 
 @server
