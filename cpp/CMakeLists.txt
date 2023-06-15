@@ -18,5 +18,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/build/bin")
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/ucall.cmake")
 include("${CMAKE_CURRENT_SOURCE_DIR}/cmake/ustore.cmake")
 
-add_executable(ucall_ustore_server server.cpp)
+add_executable(ucall_ustore_server server.c)
 target_link_libraries(ucall_ustore_server ucall_server_posix ustore)
