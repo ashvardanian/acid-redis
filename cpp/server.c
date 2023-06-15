@@ -4,7 +4,6 @@
 #include <stdio.h>
 
 #include "ucall/ucall.h"
-#include "ustore/db.h"
 #include "ustore/blobs.h"
 
 static ustore_database_t db;
