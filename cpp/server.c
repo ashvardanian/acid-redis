@@ -10,11 +10,11 @@ static ustore_database_t db = NULL;
 static ustore_arena_t arena = NULL;
 
 static void set(ucall_call_t call) {
-    int64_t* key_ptr = NULL;
+    int64_t key;
     ucall_str_t value_ptr = NULL;
     size_t value_len = 0;
 
-    bool key_found = ucall_param_named_i64(call, "key", 0, key_ptr);
+    bool key_found = ucall_param_named_i64(call, "key", 0, &key);
     bool value_found = ucall_param_named_str(call, "value", 5, &value_ptr, &value_len);
     if (!key_found || !value_found)
         return ucall_call_reply_error_invalid_params(call);
@@ -25,7 +25,7 @@ static void set(ucall_call_t call) {
     write.error = &error;
     write.arena = &arena;
     write.tasks_count = 1;
-    write.keys = (ustore_key_t*)(key_ptr);
+    write.keys = (ustore_key_t*)(&key);
     write.lengths = (ustore_length_t*)(&value_len);
     write.values = (ustore_bytes_cptr_t*)(&value_ptr);
 
@@ -36,8 +36,8 @@ static void set(ucall_call_t call) {
 }
 
 static void get(ucall_call_t call) {
-    int64_t* key_ptr = NULL;
-    bool key_found = ucall_param_named_i64(call, "key", 0, key_ptr);
+    int64_t key;
+    bool key_found = ucall_param_named_i64(call, "key", 0, &key);
     if (!key_found)
         return ucall_call_reply_error_invalid_params(call);
 
@@ -50,7 +50,7 @@ static void get(ucall_call_t call) {
     read.error = &error;
     read.arena = &arena;
     read.tasks_count = 1;
-    read.keys = (ustore_key_t*)(key_ptr);
+    read.keys = (ustore_key_t*)(&key);
     read.lengths = &found_lengths;
     read.values = &found_values;
 
