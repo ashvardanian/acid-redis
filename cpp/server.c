@@ -72,9 +72,9 @@ int main(int argc, char** argv) {
         return -1;
     }
 
-    ucall_server_t server;
     ucall_config_t config;
     config.port = 6378;
+    ucall_server_t server = NULL;
     ucall_init(&config, &server);
     if (!server) {
         printf("Failed To Initialize Server!\n");
