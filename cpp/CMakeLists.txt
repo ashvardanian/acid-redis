@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(acid-redis LANGUAGES CXX C)
+project(acid-redis)
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release)
