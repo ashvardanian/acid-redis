@@ -6,8 +6,8 @@
 #include "ucall/ucall.h"
 #include "ustore/blobs.h"
 
-static ustore_database_t db;
-static ustore_arena_t arena;
+static ustore_database_t db = NULL;
+static ustore_arena_t arena = NULL;
 
 static void set(ucall_call_t call) {
     int64_t* key_ptr = NULL;
